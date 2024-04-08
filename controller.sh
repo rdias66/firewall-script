@@ -19,3 +19,10 @@ allowPort(){
   local port="$1"
   iptables -A INPUT -p tcp --dport "$port" -j ACCEPT
 }
+
+redirectToInnerPort(){
+  local fromPort="$1"
+  local toIp="$1"
+  local toPort="$1"
+  iptables -t nat -A PREROUTING -i eth0 -p tcp --dport "$fromPort" -j DNAT --to "$toIp":"$toPort"
+}
