@@ -9,6 +9,10 @@ configFirewall() {
   iptables -t filter -Z
 
   iptables -P OUTPUT ACCEPT
-  iptables -P INPUT DROP
-  iptables -P FORWARD DROP
+  iptables -P INPUT ACCEPT
+  iptables -P FORWARD ACCEPT
+}
+
+configRouting(){
+  iptables -t nat -A POSTROUTING -o eth1 -j MASQUERADE
 }
