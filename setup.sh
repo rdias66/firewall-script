@@ -1,3 +1,5 @@
+#!/bin/bash
+
 installPackages() {
   apt-get update
   apt-get install iptables
@@ -11,3 +13,6 @@ installPackages() {
 allowIpRouting() {
   echo 1 > /proc/sys/net/ipv4/ip_forward
 }
+
+installPackages
+allowIpRouting
