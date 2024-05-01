@@ -1,6 +1,6 @@
 #!/bin/bash
 
-configFirewall() {
+initialSetup() {
   iptables -t nat -F
   iptables -t mangle -F
   iptables -t filter -F
@@ -19,5 +19,5 @@ configRouting(){
   iptables -t nat -A POSTROUTING -o eth1 -j MASQUERADE
 }
 
-configFirewall
+initialSetup
 configRouting
