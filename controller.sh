@@ -1,5 +1,15 @@
 #!/bin/bash
 
+allowPreset(){
+  allowIp "<Ip>"
+  allowIp "<Ip>"
+  allowIp "<Ip>"
+  allowIp "<Ip>"
+  allowIp "<Ip>"
+  allowIp "<Ip>"
+  allowIp "<Ip>"
+}
+
 blockIP() {
   local ip="$1"
   iptables -D INPUT -s "$ip" -j DROP
@@ -33,7 +43,7 @@ icmpServiceRedirect(){
   iptables -t nat -A PREROUTING -i eth0 -p icmp -j DNAT --to  "$toIp"
 }
 
-allowIp "<Ip>"
+allowIp "<Ip>" 
 blockIP "<Ip>"
 
 allowPort "<Port>"
